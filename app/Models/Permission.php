@@ -27,4 +27,14 @@ class Permission extends LaratrustPermission
     const author_create = 'author_create';
     const author_edit = 'author_edit';
     const author_index = 'author_index';
+
+    //Option
+    const option_create = 'option_create';
+    const option_edit = 'option_edit';
+    const option_index = 'option_index';
+
+    //Comment
+    const comment_create = 'comment_create';
+    const comment_edit = 'comment_edit';
+    const comment_index = 'comment_index';
 }

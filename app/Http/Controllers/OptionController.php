@@ -2,18 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Option;
 use Illuminate\Http\Request;
 
 class OptionController extends Controller
 {
-    /**
+      /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        //
+        $options = Option::paginate();
+        return view('option.index', compact('options'));
     }
 
     /**
@@ -23,7 +25,7 @@ class OptionController extends Controller
      */
     public function create()
     {
-        //
+        return view('option.create');
     }
 
     /**
@@ -34,7 +36,14 @@ class OptionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request =  $request->merge([
+
+    ]);
+
+        $option = Option::create($request->all());
+        // redirect
+        Session::flash('message', "Successfully saved!");
+        return Redirect::to(route('options.show', $option->id));
     }
 
     /**
@@ -43,9 +52,9 @@ class OptionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Option $option)
     {
-        //
+        return view('option.show', compact('option'));
     }
 
     /**
@@ -54,9 +63,9 @@ class OptionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Option $option)
     {
-        //
+        return view('option.edit', compact('option'));
     }
 
     /**
@@ -66,9 +75,12 @@ class OptionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Option $option)
     {
-        //
+        $option->update($request->all());
+        // redirect
+        Session::flash('message', "Successfully saved!");
+        return Redirect::to(route('options.show', $option->id));
     }
 
     /**

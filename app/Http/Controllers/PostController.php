@@ -29,7 +29,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('post.create');
     }
 
     /**
@@ -40,7 +40,16 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request =  $request->merge(['post_excerpt'=>'',
+    'to_ping'=>'',
+    'pinged'=>'',
+    'post_content_filtered'=>'',
+    ]);
+
+        $post = Post::create($request->all());
+        // redirect
+        Session::flash('message', "Successfully saved!");
+        return Redirect::to(route('posts.show', $post->id));
     }
 
     /**
@@ -75,9 +84,9 @@ class PostController extends Controller
     public function update(Request $request, Post $post)
     {
         $post->update($request->all());
-         // redirect
-         Session::flash('message', "Successfully saved!");
-         return Redirect::to(route('posts.show', $post->id));
+        // redirect
+        Session::flash('message', "Successfully saved!");
+        return Redirect::to(route('posts.show', $post->id));
     }
 
     /**

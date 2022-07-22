@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\OptionController;
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
@@ -25,6 +27,21 @@ Route::get('/dashboard', function () {
 Route::resource('posts', PostController::class)
 ->except([
     'index', 'show'
+])
+->middleware(['auth']);
+
+
+Route::resource('comments', CommentController::class)
+->except([
+   // 'index', 'show'
+])
+->middleware(['auth']);
+
+
+
+Route::resource('options', OptionController::class)
+->except([
+  //  'index', 'show'
 ])
 ->middleware(['auth']);
 

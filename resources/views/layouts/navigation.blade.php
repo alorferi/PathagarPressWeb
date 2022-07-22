@@ -19,6 +19,24 @@
                     <x-nav-link :href="route('posts.index')" :active="request()->routeIs('posts.index')">
                         {{ __('Posts') }}
                     </x-nav-link>
+
+
+                    @permission('comment_create')
+                    <x-nav-link :href="route('comments.index')" :active="request()->routeIs('comments.index')">
+                        {{ __('Comments') }}
+                    </x-nav-link>
+                @endpermission
+
+
+
+                @permission('option_create')
+                <x-nav-link :href="route('options.index')" :active="request()->routeIs('options.index')">
+                    {{ __('Options') }}
+                </x-nav-link>
+            @endpermission
+
+
+
                 </div>
             </div>
 
