@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class PostFactory extends Factory
@@ -18,11 +19,14 @@ class PostFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->name(),
-            'email' => $this->faker->unique()->safeEmail(),
-            'email_verified_at' => now(),
-            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-            'remember_token' => Str::random(10),
+            'post_title' => $this->faker->title(),
+            'post_content' => $this->faker->text(),
+            'post_excerpt' => '',
+            'to_ping' => '',
+            'pinged' => '',
+            'post_content_filtered' => '',
+            'post_content_filtered' => '',
+            'post_author'=>  User::factory(),
         ];
     }
 }
