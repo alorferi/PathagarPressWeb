@@ -19,7 +19,7 @@ class PostFactory extends Factory
     public function definition()
     {
         return [
-            'post_title' => $this->faker->title(),
+            'post_title' => $this->faker->sentence(),
             'post_content' => $this->faker->text(),
             'post_excerpt' => '',
             'to_ping' => '',
