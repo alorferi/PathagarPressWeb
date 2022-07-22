@@ -22,6 +22,13 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-Route::resource('posts', PostController::class)->middleware(['auth']);
+Route::resource('posts', PostController::class)
+->except([
+    'index', 'show'
+])
+->middleware(['auth']);
+
+Route::get('posts', [PostController::class,'index'])->name('posts.index');
+Route::get('posts/{post}', [PostController::class,'show'])->name('posts.show');
 
 require __DIR__.'/auth.php';

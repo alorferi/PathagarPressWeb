@@ -5,15 +5,15 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
+                    <a href="{{ route('/') }}">
                         <x-application-logo class="block h-10 w-auto fill-current text-gray-600" />
                     </a>
                 </div>
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
+                    <x-nav-link :href="route('/')" :active="request()->routeIs('/')">
+                        {{ __('Home') }}
                     </x-nav-link>
 
                     <x-nav-link :href="route('posts.index')" :active="request()->routeIs('posts.index')">
@@ -23,6 +23,24 @@
             </div>
 
             <!-- Settings Dropdown -->
+            <div class="hidden sm:flex sm:items-center sm:ml-6">
+
+
+
+
+                @guest
+                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <x-nav-link :href="route('login')" :active="request()->routeIs('login')">
+                            {{ __('Login') }}
+                        </x-nav-link>
+
+                        <x-nav-link :href="route('register')" :active="request()->routeIs('register')">
+                            {{ __('Register') }}
+                        </x-nav-link>
+                    </div>
+                @else
+
+                       <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ml-6">
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
@@ -56,6 +74,11 @@
                 </x-dropdown>
             </div>
 
+                @endguest
+
+
+            </div>
+
             <!-- Hamburger -->
             <div class="-mr-2 flex items-center sm:hidden">
                 <button @click="open = ! open"
@@ -80,25 +103,6 @@
             </x-responsive-nav-link>
         </div>
 
-        <!-- Responsive Settings Options -->
-        <div class="pt-4 pb-1 border-t border-gray-200">
-            <div class="px-4">
-                <div class="font-medium text-base text-gray-800">{{ Auth::user()->name }}</div>
-                <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
-            </div>
 
-            <div class="mt-3 space-y-1">
-                <!-- Authentication -->
-                <form method="POST" action="{{ route('logout') }}">
-                    @csrf
-
-                    <x-responsive-nav-link :href="route('logout')"
-                        onclick="event.preventDefault();
-                                        this.closest('form').submit();">
-                        {{ __('Log Out') }}
-                    </x-responsive-nav-link>
-                </form>
-            </div>
-        </div>
     </div>
 </nav>
