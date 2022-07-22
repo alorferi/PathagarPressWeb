@@ -25,6 +25,7 @@ class Option extends Model
     const require_name_email = 'require_name_email';
     const comments_notify = 'comments_notify';
     const posts_per_rss = 'posts_per_rss';
+    const rss_use_excerpt = 'rss_use_excerpt';
     const mailserver_url = 'mailserver_url';
     const mailserver_login = 'mailserver_login';
     const mailserver_pass = 'mailserver_pass';
