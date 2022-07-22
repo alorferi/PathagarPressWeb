@@ -16,6 +16,18 @@ class RoleTableSeeder extends Seeder
     public function run()
     {
 
+         //Post
+         $user_create = Permission::create([
+            'name' => Permission::user_create,
+            'display_name' => 'user_create',
+        ]);
+
+        $user_edit = Permission::create([
+            'name' => Permission::user_edit,
+            'display_name' => 'user_edit',
+        ]);
+
+
         //Post
         $post_create = Permission::create([
             'name' => Permission::post_create,
@@ -92,6 +104,8 @@ class RoleTableSeeder extends Seeder
             'display_name' => 'Super Admin',
         ]);
 
+        $saRole->attachPermission($user_create);
+        $saRole->attachPermission($user_edit);
 
         $saRole->attachPermission($author_create);
         $saRole->attachPermission($author_edit);

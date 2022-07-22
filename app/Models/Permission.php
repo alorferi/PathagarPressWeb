@@ -17,6 +17,7 @@ class Permission extends LaratrustPermission
 
     //User
     const user_create = 'user_create';
+    const user_edit = 'user_edit';
 
     //Post
     const post_create = 'post_create';

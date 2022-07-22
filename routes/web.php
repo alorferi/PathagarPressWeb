@@ -3,6 +3,7 @@
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\OptionController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\UserController;
 use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 
@@ -34,6 +35,12 @@ Route::resource('posts', PostController::class)
 
 
 Route::resource('comments', CommentController::class)
+->except([
+   // 'index', 'show'
+])
+->middleware(['auth']);
+
+Route::resource('users', UserController::class)
 ->except([
    // 'index', 'show'
 ])
