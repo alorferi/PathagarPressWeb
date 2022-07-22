@@ -34,5 +34,8 @@ class DatabaseSeeder extends Seeder
 
         Comment::factory(20)->create();
 
+
+         $this->call(RoleTableSeeder::class);
+
     }
 }
