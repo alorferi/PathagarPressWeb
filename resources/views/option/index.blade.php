@@ -24,10 +24,9 @@
 
                 @forelse($options as $option)
                     <div class="p-6 m-6 bg-white border-b border-gray-200">
-                        {{ $option->option_title }}
+                        {{ $option->option_name }}:
 
-                        <a href="{{ route('options.show', $option->id) }}">Details</a>
-
+                        {{ $option->option_value }}
                         @permission('option_edit')
                             <a href="{{ route('options.edit', $option->id) }}">Edit</a>
                         @endpermission

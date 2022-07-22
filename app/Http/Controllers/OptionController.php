@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Option;
 use Illuminate\Http\Request;
+use Redirect;
+use Session;
+use Validator;
 
 class OptionController extends Controller
 {
@@ -80,7 +83,7 @@ class OptionController extends Controller
         $option->update($request->all());
         // redirect
         Session::flash('message', "Successfully saved!");
-        return Redirect::to(route('options.show', $option->id));
+        return Redirect::to(route('options.index'));
     }
 
     /**

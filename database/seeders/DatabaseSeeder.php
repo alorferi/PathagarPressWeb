@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        $this->call(OptionsTableSeeder::class);
         $this->call(RoleTableSeeder::class);
 
         $adminRole = Role::where('name', '=', 'ga')->first();

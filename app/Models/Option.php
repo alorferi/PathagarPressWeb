@@ -11,6 +11,8 @@ class Option extends Model
     use HasFactory;
     use SoftDeletes;
 
+    protected $guarded = [];
+
     const siteurl = 'siteurl';
     const home = 'home';
     const blogname = 'blogname';

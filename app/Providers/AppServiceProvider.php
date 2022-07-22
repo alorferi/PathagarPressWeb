@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Models\Option;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\View;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -23,6 +25,14 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        View::composer(['layouts.app','layouts.guest'], function ($view) {
+            $defaultLibraryName = null;
+            $defaultLibraryId = null;
+
+           $blogname = Option::where('option_name',Option::blogname)->first();
+           $blogdescription = Option::where('option_name',Option::blogdescription)->first();
+
+            $view->with(compact('blogname','blogdescription'));
+        });
     }
 }
