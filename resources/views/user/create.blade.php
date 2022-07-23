@@ -5,9 +5,6 @@
         </h2>
     </x-slot>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-
             <a href="{{ route('users.index') }}"
                 class="bg-blue-500 text-white font-bold py-2 px-4 mx-4 my-4 rounded-full">Back</a>
 
@@ -36,6 +33,5 @@
                     </form>
                 </div>
             </div>
-        </div>
-    </div>
+
 </x-app-layout>

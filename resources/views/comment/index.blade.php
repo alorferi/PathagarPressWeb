@@ -7,8 +7,7 @@
 
 
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+
 
             @permission('comment_create')
                 <a href="{{ route('comments.create') }}" class="bg-blue-500 text-white font-bold py-2 px-4 rounded-full">Create</a>
@@ -42,6 +41,5 @@
             <div class="p-2">
                 {!! $comments->links() !!}
             </div>
-        </div>
-    </div>
+
 </x-app-layout>

@@ -41,6 +41,25 @@
                         </x-nav-link>
                     @endpermission
 
+
+                    @permission('term_create')
+                        <x-nav-link :href="route('terms.index')" :active="request()->routeIs('terms.index')">
+                            {{ __('Terms') }}
+                        </x-nav-link>
+                    @endpermission
+
+                    @permission('role_create')
+                        <x-nav-link :href="route('roles.index')" :active="request()->routeIs('roles.index')">
+                            {{ __('Roles') }}
+                        </x-nav-link>
+                    @endpermission
+
+                    @permission('permission_create')
+                        <x-nav-link :href="route('permissions.index')" :active="request()->routeIs('permissions.index')">
+                            {{ __('Permissions') }}
+                        </x-nav-link>
+                    @endpermission
+
                 </div>
             </div>
 

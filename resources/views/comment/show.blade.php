@@ -5,9 +5,7 @@
         </h2>
     </x-slot>
 
-    <div class="py-12">
 
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             @permission('comment_edit')
                 <a href="{{ route('comments.edit', $comment->id) }}"
                     class="bg-blue-500 text-white font-bold py-2 px-4 mx-4 my-4 rounded-full">Edit</a>
@@ -23,6 +21,5 @@
                 </div>
 
             </div>
-        </div>
-    </div>
+
 </x-app-layout>

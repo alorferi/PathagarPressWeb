@@ -2,7 +2,10 @@
 
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\OptionController;
+use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\TermController;
 use App\Http\Controllers\TermCoontroller;
 use App\Http\Controllers\UserController;
 use App\Models\Post;
@@ -54,6 +57,19 @@ Route::resource('terms', TermController::class)
 ->middleware(['auth']);
 
 Route::resource('options', OptionController::class)
+->except([
+  //  'index', 'show'
+])
+->middleware(['auth']);
+
+
+Route::resource('roles', RoleController::class)
+->except([
+  //  'index', 'show'
+])
+->middleware(['auth']);
+
+Route::resource('permissions', PermissionController::class)
 ->except([
   //  'index', 'show'
 ])

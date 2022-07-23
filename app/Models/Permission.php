@@ -42,8 +42,18 @@ class Permission extends LaratrustPermission
     const term_edit = 'term_edit';
     const term_index = 'term_index';
 
+    //Role
+    const role_create = 'role_create';
+    const role_edit = 'role_edit';
+    const role_index = 'role_index';
 
-    public static function getPermissionList(){
+    //Permission
+    const permission_create = 'permission_create';
+    const permission_edit = 'permission_edit';
+    const permission_index = 'permission_index';
+
+    public static function getPermissionList()
+    {
         $permissions = [
             Permission::user_create,
             Permission::user_edit ,
@@ -53,24 +63,35 @@ class Permission extends LaratrustPermission
             Permission::post_index ,
 
             //Author
-            Permission:: author_create ,
-            Permission:: author_edit ,
-            Permission:: author_index ,
+            Permission::author_create ,
+            Permission::author_edit ,
+            Permission::author_index ,
 
             //Option
-            Permission:: option_create,
-            Permission:: option_edit ,
-            Permission:: option_index ,
+            Permission::option_create,
+            Permission::option_edit ,
+            Permission::option_index ,
 
             //Comment
-            Permission:: comment_create ,
-            Permission:: comment_edit,
-            Permission:: comment_index ,
+            Permission::comment_create ,
+            Permission::comment_edit,
+            Permission::comment_index ,
 
             //Term
-            Permission:: term_create,
-            Permission:: term_edit ,
-            Permission:: term_index ,
+            Permission::term_create,
+            Permission::term_edit ,
+            Permission::term_index ,
+
+             //Role
+             Permission::role_create ,
+             Permission::role_edit,
+             Permission::role_index ,
+
+            //Permission
+            Permission::permission_create ,
+            Permission::permission_edit ,
+            Permission::permission_index ,
+
         ];
 
         return $permissions;

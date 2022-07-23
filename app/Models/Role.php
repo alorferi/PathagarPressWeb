@@ -14,6 +14,13 @@ class Role extends LaratrustRole
     public $guarded = [];
 
     const sa = 'sa';
-    const ga = 'ga';
     const author = 'author';
+    const subscriber = 'subscriber';
+    const contributor = 'contributor';
+    const editor = 'editor';
+    const administrator = 'administrator';
+    const seo_editor = 'seo_editor';
+    const seo_manager = 'seo_manager';
+
+
 }

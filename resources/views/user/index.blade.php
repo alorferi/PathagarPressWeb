@@ -7,9 +7,6 @@
 
 
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-
             @permission('user_create')
                 <a href="{{ route('users.create') }}" class="bg-blue-500 text-white font-bold py-2 px-4 rounded-full">Create</a>
             @endpermission
@@ -42,6 +39,5 @@
             <div class="p-2">
                 {!! $users->links() !!}
             </div>
-        </div>
-    </div>
+
 </x-app-layout>

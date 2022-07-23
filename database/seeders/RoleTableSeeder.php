@@ -16,130 +16,62 @@ class RoleTableSeeder extends Seeder
     public function run()
     {
 
-         //Post
-         $user_create = Permission::create([
-            'name' => Permission::user_create,
-            'display_name' => 'user_create',
-        ]);
-
-        $user_edit = Permission::create([
-            'name' => Permission::user_edit,
-            'display_name' => 'user_edit',
-        ]);
-
-
-        //Post
-        $post_create = Permission::create([
-            'name' => Permission::post_create,
-            'display_name' => 'post_create',
-        ]);
-
-        $post_edit = Permission::create([
-            'name' => Permission::post_edit,
-            'display_name' => 'post_edit',
-        ]);
-
-        $post_index = Permission::create([
-            'name' => Permission::post_index,
-            'display_name' => 'post_index',
-        ]);
-
-        //Comment
-        $comment_create = Permission::create([
-            'name' => Permission::comment_create,
-            'display_name' => 'comment_create',
-        ]);
-
-        $comment_edit = Permission::create([
-            'name' => Permission::comment_edit,
-            'display_name' => 'comment_edit',
-        ]);
-
-        $comment_index = Permission::create([
-            'name' => Permission::comment_index,
-            'display_name' => 'comment_index',
-        ]);
-
-
-
-        //Option
-        $option_create = Permission::create([
-            'name' => Permission::option_create,
-            'display_name' => 'option_create',
-        ]);
-
-        $option_edit = Permission::create([
-            'name' => Permission::option_edit,
-            'display_name' => 'option_edit',
-        ]);
-
-        $option_index = Permission::create([
-            'name' => Permission::option_index,
-            'display_name' => 'option_index',
-        ]);
-
-
-        //Author
-        $author_create = Permission::create([
-            'name' => Permission::author_create,
-            'display_name' => 'author_create',
-        ]);
-
-
-        $author_edit = Permission::create([
-            'name' => Permission::author_edit,
-            'display_name' => 'author_edit',
-        ]);
-
-
-        $author_index = Permission::create([
-            'name' => Permission::author_index,
-            'display_name' => 'author_index',
-        ]);
-
-
-        //SA
         $saRole =   Role::create([
             'name' => Role::sa,
             'display_name' => 'Super Admin',
         ]);
 
-        $saRole->attachPermission($user_create);
-        $saRole->attachPermission($user_edit);
 
-        $saRole->attachPermission($author_create);
-        $saRole->attachPermission($author_edit);
-        $saRole->attachPermission($author_index);
+        foreach (Permission::getPermissionList() as $permission_name) {
 
-        $saRole->attachPermission($post_create);
-        $saRole->attachPermission($post_edit);
-        $saRole->attachPermission($post_index);
+            $permission = Permission::create([
+            'name' => $permission_name,
+            'display_name' => $permission_name,
+        ]);
 
-        $saRole->attachPermission($comment_create);
-        $saRole->attachPermission($comment_edit);
-        $saRole->attachPermission($comment_index);
+            $saRole->attachPermission($permission);
+        }
 
-        $saRole->attachPermission($option_create);
-        $saRole->attachPermission($option_edit);
-        $saRole->attachPermission($option_index);
-
-
-        $gaRole =   Role::create([
-            'name' => Role::ga,
-            'display_name' => 'General Admin',
+        $administrator =   Role::create([
+            'name' => Role::administrator,
+            'display_name' => 'Administrator',
         ]);
 
 
-        $gaRole->attachPermission($author_create);
-        $gaRole->attachPermission($author_edit);
-        $gaRole->attachPermission($author_index);
-
-
+        $administrator->attachPermission(Permission::where('name',Permission::author_create)->first());
+        $administrator->attachPermission(Permission::where('name',Permission::author_edit)->first());
+        $administrator->attachPermission(Permission::where('name',Permission::author_index)->first());
 
 
         Role::create([
             'name' => Role::author,
             'display_name' => 'Author',
+        ]);
+
+
+        Role::create([
+            'name' => Role::seo_editor,
+            'display_name' => 'SEO Editor',
+        ]);
+
+        Role::create([
+            'name' => Role::seo_manager,
+            'display_name' => 'SEO Manager',
+        ]);
+
+        Role::create([
+            'name' => Role::subscriber,
+            'display_name' => 'Subscriber',
+        ]);
+
+        Role::create([
+            'name' => Role::contributor,
+            'display_name' => 'Contributor',
+        ]);
+
+        Role::create([
+            'name' => Role::editor,
+            'display_name' => 'Editor',
         ]);
     }
 }
