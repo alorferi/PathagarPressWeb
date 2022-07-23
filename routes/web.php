@@ -3,6 +3,7 @@
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\OptionController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\TermCoontroller;
 use App\Http\Controllers\UserController;
 use App\Models\Post;
 use Illuminate\Support\Facades\Route;
@@ -46,7 +47,11 @@ Route::resource('users', UserController::class)
 ])
 ->middleware(['auth']);
 
-
+Route::resource('terms', TermController::class)
+->except([
+   // 'index', 'show'
+])
+->middleware(['auth']);
 
 Route::resource('options', OptionController::class)
 ->except([

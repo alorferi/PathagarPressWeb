@@ -13,8 +13,6 @@ class Permission extends LaratrustPermission
 
     public $guarded = [];
 
-
-
     //User
     const user_create = 'user_create';
     const user_edit = 'user_edit';
@@ -38,4 +36,43 @@ class Permission extends LaratrustPermission
     const comment_create = 'comment_create';
     const comment_edit = 'comment_edit';
     const comment_index = 'comment_index';
+
+    //Term
+    const term_create = 'term_create';
+    const term_edit = 'term_edit';
+    const term_index = 'term_index';
+
+
+    public static function getPermissionList(){
+        $permissions = [
+            Permission::user_create,
+            Permission::user_edit ,
+
+            //Post
+            Permission::post_create ,
+            Permission::post_index ,
+
+            //Author
+            Permission:: author_create ,
+            Permission:: author_edit ,
+            Permission:: author_index ,
+
+            //Option
+            Permission:: option_create,
+            Permission:: option_edit ,
+            Permission:: option_index ,
+
+            //Comment
+            Permission:: comment_create ,
+            Permission:: comment_edit,
+            Permission:: comment_index ,
+
+            //Term
+            Permission:: term_create,
+            Permission:: term_edit ,
+            Permission:: term_index ,
+        ];
+
+        return $permissions;
+    }
 }
