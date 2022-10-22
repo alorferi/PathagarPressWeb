@@ -1,16 +1,5 @@
 <?php
 
-use App\Http\Controllers\CommentController;
-use App\Http\Controllers\OptionController;
-use App\Http\Controllers\PermissionController;
-use App\Http\Controllers\PostController;
-use App\Http\Controllers\RoleController;
-use App\Http\Controllers\TermController;
-use App\Http\Controllers\TermCoontroller;
-use App\Http\Controllers\UserController;
-use App\Models\Post;
-use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,60 +11,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    $posts = Post::latest()->paginate();
-    return view('welcome', compact('posts') );
-})->name("/");
+require __DIR__.'/guest.php';
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
-
-Route::resource('posts', PostController::class)
-->except([
-    'index', 'show'
-])
-->middleware(['auth']);
-
-
-Route::resource('comments', CommentController::class)
-->except([
-   // 'index', 'show'
-])
-->middleware(['auth']);
-
-Route::resource('users', UserController::class)
-->except([
-   // 'index', 'show'
-])
-->middleware(['auth']);
-
-Route::resource('terms', TermController::class)
-->except([
-   // 'index', 'show'
-])
-->middleware(['auth']);
-
-Route::resource('options', OptionController::class)
-->except([
-  //  'index', 'show'
-])
-->middleware(['auth']);
-
-
-Route::resource('roles', RoleController::class)
-->except([
-  //  'index', 'show'
-])
-->middleware(['auth']);
-
-Route::resource('permissions', PermissionController::class)
-->except([
-  //  'index', 'show'
-])
-->middleware(['auth']);
-
-Route::get('posts', [PostController::class,'index'])->name('posts.index');
-Route::get('posts/{post}', [PostController::class,'show'])->name('posts.show');
+require __DIR__.'/admin.php';
 
 require __DIR__.'/auth.php';

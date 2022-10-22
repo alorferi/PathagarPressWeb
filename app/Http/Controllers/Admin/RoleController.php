@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Models\Role;
 use App\Models\Permission;
+use App\Http\Controllers\Controller;
 
 class RoleController extends Controller
 {
@@ -33,7 +34,7 @@ class RoleController extends Controller
         ->orderBy("name")->paginate();
 
         $roles->appends($request->all());
-        return view('role.index', compact('roles','term'));
+        return view('admin.role.index', compact('roles','term'));
     }
 
     /**
@@ -44,7 +45,7 @@ class RoleController extends Controller
     public function create()
     {
         $permissions = Permission::orderBy('name')->get();
-        return view('role.create', compact('permissions'));
+        return view('admin.role.create', compact('permissions'));
     }
 
     /**
@@ -98,7 +99,7 @@ class RoleController extends Controller
         $permissions = Permission::orderBy('name')->get();
         $role_permissions = $role->permissions->pluck('id', 'id')->toArray();
 
-        return view('role.edit', compact(['role', 'role_permissions', 'permissions']));
+        return view('admin.role.edit', compact(['role', 'role_permissions', 'permissions']));
     }
 
     /**

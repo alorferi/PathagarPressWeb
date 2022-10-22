@@ -1,13 +1,17 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Models\Comment;
+use App\Models\Post;
 use Illuminate\Http\Request;
 
-class CommentController extends Controller
-{
+use Redirect;
+use Session;
+use Validator;
+use App\Http\Controllers\Controller;
 
+class PostController extends Controller
+{
     /**
      * Display a listing of the resource.
      *
@@ -15,8 +19,8 @@ class CommentController extends Controller
      */
     public function index()
     {
-        $comments = Comment::paginate();
-        return view('comment.index', compact('comments'));
+        $posts = Post::paginate();
+        return view('admin.post.index', compact('posts'));
     }
 
     /**
@@ -26,7 +30,7 @@ class CommentController extends Controller
      */
     public function create()
     {
-        return view('comment.create');
+        return view('admin.post.create');
     }
 
     /**
@@ -37,14 +41,16 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-        $request =  $request->merge([
-
+        $request =  $request->merge(['post_excerpt'=>'',
+    'to_ping'=>'',
+    'pinged'=>'',
+    'post_content_filtered'=>'',
     ]);
 
-        $comment = Comment::create($request->all());
+        $post = Post::create($request->all());
         // redirect
         Session::flash('message', "Successfully saved!");
-        return Redirect::to(route('comments.show', $comment->id));
+        return Redirect::to(route('posts.show', $post->id));
     }
 
     /**
@@ -53,9 +59,9 @@ class CommentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Comment $comment)
+    public function show(Post $post)
     {
-        return view('comment.show', compact('comment'));
+        return view('admin.post.show', compact('post'));
     }
 
     /**
@@ -64,9 +70,9 @@ class CommentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Comment $comment)
+    public function edit(Post $post)
     {
-        return view('comment.edit', compact('comment'));
+        return view('admin.post.edit', compact('post'));
     }
 
     /**
@@ -76,12 +82,12 @@ class CommentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Comment $comment)
+    public function update(Request $request, Post $post)
     {
-        $comment->update($request->all());
+        $post->update($request->all());
         // redirect
         Session::flash('message', "Successfully saved!");
-        return Redirect::to(route('comments.show', $comment->id));
+        return Redirect::to(route('posts.show', $post->id));
     }
 
     /**

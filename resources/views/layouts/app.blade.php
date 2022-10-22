@@ -20,7 +20,7 @@
 
 <body class="font-sans antialiased">
     <div class="min-h-screen bg-gray-100">
-        @include('layouts.navigation')
+        @include('navigations.admin_nav')
 
         <!-- Page Heading -->
         <header class="bg-white shadow">

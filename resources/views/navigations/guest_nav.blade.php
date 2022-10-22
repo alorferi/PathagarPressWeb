@@ -16,58 +16,17 @@
                         {{ __('Home') }}
                     </x-nav-link>
 
-                    <x-nav-link :href="route('posts.index')" :active="request()->routeIs('posts.index')">
+                    <x-nav-link :href="route('guest.posts.index')" :active="request()->routeIs('guest.posts.index')">
                         {{ __('Posts') }}
                     </x-nav-link>
 
 
-                    @permission('comment_create')
-                        <x-nav-link :href="route('comments.index')" :active="request()->routeIs('comments.index')">
-                            {{ __('Comments') }}
-                        </x-nav-link>
-                    @endpermission
-
-
-
-                    @permission('option_create')
-                        <x-nav-link :href="route('options.index')" :active="request()->routeIs('options.index')">
-                            {{ __('Options') }}
-                        </x-nav-link>
-                    @endpermission
-
-                    @permission('user_create')
-                        <x-nav-link :href="route('users.index')" :active="request()->routeIs('users.index')">
-                            {{ __('Users') }}
-                        </x-nav-link>
-                    @endpermission
-
-
-                    @permission('term_create')
-                        <x-nav-link :href="route('terms.index')" :active="request()->routeIs('terms.index')">
-                            {{ __('Terms') }}
-                        </x-nav-link>
-                    @endpermission
-
-                    @permission('role_create')
-                        <x-nav-link :href="route('roles.index')" :active="request()->routeIs('roles.index')">
-                            {{ __('Roles') }}
-                        </x-nav-link>
-                    @endpermission
-
-                    @permission('permission_create')
-                        <x-nav-link :href="route('permissions.index')" :active="request()->routeIs('permissions.index')">
-                            {{ __('Permissions') }}
-                        </x-nav-link>
-                    @endpermission
 
                 </div>
             </div>
 
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ml-6">
-
-
-
 
                 @guest
                     <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
@@ -138,7 +97,7 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{ 'block': open, 'hidden': !open }" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+            <x-responsive-nav-link :href="route('pp-admin.dashboard')" :active="request()->routeIs('pp-admin.dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
         </div>

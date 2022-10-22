@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Models\Option;
 use Illuminate\Http\Request;
 use Redirect;
 use Session;
 use Validator;
+use App\Http\Controllers\Controller;
 
 class OptionController extends Controller
 {
@@ -18,7 +19,7 @@ class OptionController extends Controller
     public function index()
     {
         $options = Option::paginate();
-        return view('option.index', compact('options'));
+        return view('admin.option.index', compact('options'));
     }
 
     /**
@@ -28,7 +29,7 @@ class OptionController extends Controller
      */
     public function create()
     {
-        return view('option.create');
+        return view('admin.option.create');
     }
 
     /**
@@ -57,7 +58,7 @@ class OptionController extends Controller
      */
     public function show(Option $option)
     {
-        return view('option.show', compact('option'));
+        return view('admin.option.show', compact('option'));
     }
 
     /**
@@ -68,7 +69,7 @@ class OptionController extends Controller
      */
     public function edit(Option $option)
     {
-        return view('option.edit', compact('option'));
+        return view('admin.option.edit', compact('option'));
     }
 
     /**

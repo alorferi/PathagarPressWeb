@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Models\Permission;
+use App\Http\Controllers\Controller;
 
 class PermissionController extends Controller
 {
@@ -38,7 +39,7 @@ class PermissionController extends Controller
 
         $permissions->appends($request->all());
 
-        return view('permission.index', compact('permissions','term'));
+        return view('admin.permission.index', compact('permissions','term'));
     }
 
     /**
@@ -48,7 +49,7 @@ class PermissionController extends Controller
      */
     public function create()
     {
-        return view('permission.create');
+        return view('admin.permission.create');
     }
 
     /**
@@ -88,7 +89,7 @@ class PermissionController extends Controller
     public function edit($id)
     {
         $permission = Permission::find($id);
-        return view('permission.edit', compact(['permission']));
+        return view('admin.permission.edit', compact(['permission']));
     }
 
     /**

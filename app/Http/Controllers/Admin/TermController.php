@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Models\Term;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class TermController extends Controller
 {
@@ -15,7 +16,7 @@ class TermController extends Controller
     public function index()
     {
         $terms = Term::paginate();
-        return view('term.index', compact('terms'));
+        return view('admin.term.index', compact('terms'));
     }
 
     /**
@@ -25,7 +26,7 @@ class TermController extends Controller
      */
     public function create()
     {
-        return view('term.create');
+        return view('admin.term.create');
     }
 
     /**
@@ -54,7 +55,7 @@ class TermController extends Controller
      */
     public function show(Term $term)
     {
-        return view('term.show', compact('term'));
+        return view('admin.term.show', compact('term'));
     }
 
     /**
@@ -65,7 +66,7 @@ class TermController extends Controller
      */
     public function edit(Term $term)
     {
-        return view('term.edit', compact('term'));
+        return view('admin.term.edit', compact('term'));
     }
 
     /**

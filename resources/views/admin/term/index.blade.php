@@ -10,7 +10,7 @@
 
 
             @permission('term_create')
-                <a href="{{ route('terms.create') }}" class="bg-blue-500 text-white font-bold py-2 px-4 rounded-full">Create</a>
+                <a href="{{ route('pp-admin.terms.create') }}" class="bg-blue-500 text-white font-bold py-2 px-4 rounded-full">Create</a>
             @endpermission
 
             <div class="p-2">
@@ -27,7 +27,7 @@
 
                         {{ $term->term_value }}
                         @permission('term_edit')
-                            <a href="{{ route('terms.edit', $term->id) }}">Edit</a>
+                            <a href="{{ route('pp-admin.terms.edit', $term->id) }}">Edit</a>
                         @endpermission
 
 
