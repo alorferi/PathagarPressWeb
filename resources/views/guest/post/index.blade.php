@@ -7,7 +7,7 @@
 
 
             @permission('post_create')
-                <a href="{{ route('pp-admin.posts.create') }}" class="bg-blue-500 text-white font-bold py-2 px-4 rounded-full">Create</a>
+                <a href="{{ route('admine') }}" class="bg-blue-500 text-white font-bold py-2 px-4 rounded-full">Create</a>
             @endpermission
 
             @include('guest.post.post_list_view')

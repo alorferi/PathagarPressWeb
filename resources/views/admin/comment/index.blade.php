@@ -10,7 +10,7 @@
 
 
             @permission('comment_create')
-                <a href="{{ route('pp-admin.comments.create') }}" class="bg-blue-500 text-white font-bold py-2 px-4 rounded-full">Create</a>
+                <a href="{{ route('admin.comments.create') }}" class="bg-blue-500 text-white font-bold py-2 px-4 rounded-full">Create</a>
             @endpermission
 
             <div class="p-2">
@@ -27,7 +27,7 @@
 
 
                         @permission('comment_edit')
-                            <a href="{{ route('pp-admin.comments.edit', $comment->id) }}">Edit</a>
+                            <a href="{{ route('admin.comments.edit', $comment->id) }}">Edit</a>
                         @endpermission
 
 

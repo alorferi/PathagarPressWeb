@@ -10,7 +10,7 @@
 
 
             @permission('option_create')
-                <a href="{{ route('pp-admin.options.create') }}" class="bg-blue-500 text-white font-bold py-2 px-4 rounded-full">Create</a>
+                <a href="{{ route('admin.options.create') }}" class="bg-blue-500 text-white font-bold py-2 px-4 rounded-full">Create</a>
             @endpermission
 
             <div class="p-2">
@@ -27,7 +27,7 @@
 
                         {{ $option->option_value }}
                         @permission('option_edit')
-                            <a href="{{ route('pp-admin.options.edit', $option->id) }}">Edit</a>
+                            <a href="{{ route('admin.options.edit', $option->id) }}">Edit</a>
                         @endpermission
 
 

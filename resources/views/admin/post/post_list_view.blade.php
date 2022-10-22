@@ -11,7 +11,7 @@
             <a href="{{ route('guest.posts.show', $post->id) }}">Details</a>
 
             @permission('post_edit')
-                <a href="{{ route('posts.edit', $post->id) }}">Edit</a>
+                <a href="{{ route('admin.posts.edit', $post->id) }}">Edit</a>
             @endpermission
 
 

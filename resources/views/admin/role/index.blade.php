@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
 
-    <a class="btn btn-success" href="{{ route('pp-admin.roles.create') }}">Create </a>
+    <a class="btn btn-success" href="{{ route('admin.roles.create') }}">Create </a>
 
 
 
@@ -47,8 +47,8 @@
     	@forelse($roles as $role)
     	<tr>
 				<td>
-						<a class="btn btn-info btn-sm" href="{{ route('pp-admin.roles.edit',$role) }}">Edit</a>
-						<form action="{{ route('pp-admin.roles.destroy', $role->id) }}" method="POST">
+						<a class="btn btn-info btn-sm" href="{{ route('admin.roles.edit',$role) }}">Edit</a>
+						<form action="{{ route('admin.roles.destroy', $role->id) }}" method="POST">
 							@csrf
 							{{ method_field('DELETE') }}
 							<input class="btn btn-sm btn-danger" type="submit" name="submit" value="Delete">

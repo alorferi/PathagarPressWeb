@@ -8,7 +8,7 @@ use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\TermController;
 use App\Http\Controllers\Admin\UserController;
 
-Route::group(['prefix' => 'pp-admin',  'middleware' => ['auth'], 'as'=>"pp-admin."], function () {
+Route::group(['prefix' => 'admin',  'middleware' => ['auth'], 'as'=>"admin."], function () {
 
     Route::get('/', function () {
         return view('dashboard');

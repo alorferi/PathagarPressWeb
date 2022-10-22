@@ -8,7 +8,7 @@
 
 
             @permission('user_create')
-                <a href="{{ route('pp-admin.users.create') }}" class="bg-blue-500 text-white font-bold py-2 px-4 rounded-full">Create</a>
+                <a href="{{ route('admin.users.create') }}" class="bg-blue-500 text-white font-bold py-2 px-4 rounded-full">Create</a>
             @endpermission
 
             <div class="p-2">
@@ -25,8 +25,10 @@
 
 
                         @permission('user_edit')
-                            <a href="{{ route('pp-admin.users.edit', $user->id) }}">Edit</a>
+                            <a href="{{ route('admin.users.edit', $user->id) }}">Edit</a>
                         @endpermission
+
+                        <a href="{{ route('admin.users.show', $user->id) }}" class="bg-blue-500 text-white font-bold py-2 px-4">Show</a>
 
 
                     </div>

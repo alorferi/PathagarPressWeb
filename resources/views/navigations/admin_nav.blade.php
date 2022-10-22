@@ -5,7 +5,7 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('pp-admin.dashboard') }}">
+                    <a href="{{ route('admin.dashboard') }}">
                         Admin
                         {{-- <x-application-logo class="block h-10 w-auto fill-current text-gray-600" /> --}}
                     </a>
@@ -17,13 +17,13 @@
                         {{ __('Home') }}
                     </x-nav-link> --}}
 
-                    <x-nav-link :href="route('pp-admin.posts.index')" :active="request()->routeIs('pp-admin.posts.index')">
+                    <x-nav-link :href="route('admin.posts.index')" :active="request()->routeIs('admin.posts.index')">
                         {{ __('Posts') }}
                     </x-nav-link>
 
 
                     @permission('comment_create')
-                        <x-nav-link :href="route('pp-admin.comments.index')" :active="request()->routeIs('comments.index')">
+                        <x-nav-link :href="route('admin.comments.index')" :active="request()->routeIs('comments.index')">
                             {{ __('Comments') }}
                         </x-nav-link>
                     @endpermission
@@ -31,32 +31,32 @@
 
 
                     @permission('option_create')
-                        <x-nav-link :href="route('pp-admin.options.index')" :active="request()->routeIs('options.index')">
+                        <x-nav-link :href="route('admin.options.index')" :active="request()->routeIs('options.index')">
                             {{ __('Options') }}
                         </x-nav-link>
                     @endpermission
 
                     @permission('user_create')
-                        <x-nav-link :href="route('pp-admin.users.index')" :active="request()->routeIs('users.index')">
+                        <x-nav-link :href="route('admin.users.index')" :active="request()->routeIs('users.index')">
                             {{ __('Users') }}
                         </x-nav-link>
                     @endpermission
 
 
                     @permission('term_create')
-                        <x-nav-link :href="route('pp-admin.terms.index')" :active="request()->routeIs('terms.index')">
+                        <x-nav-link :href="route('admin.terms.index')" :active="request()->routeIs('terms.index')">
                             {{ __('Terms') }}
                         </x-nav-link>
                     @endpermission
 
                     @permission('role_create')
-                        <x-nav-link :href="route('pp-admin.roles.index')" :active="request()->routeIs('roles.index')">
+                        <x-nav-link :href="route('admin.roles.index')" :active="request()->routeIs('roles.index')">
                             {{ __('Roles') }}
                         </x-nav-link>
                     @endpermission
 
                     @permission('permission_create')
-                        <x-nav-link :href="route('pp-admin.permissions.index')" :active="request()->routeIs('permissions.index')">
+                        <x-nav-link :href="route('admin.permissions.index')" :active="request()->routeIs('permissions.index')">
                             {{ __('Permissions') }}
                         </x-nav-link>
                     @endpermission
@@ -146,7 +146,7 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{ 'block': open, 'hidden': !open }" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('pp-admin.dashboard')" :active="request()->routeIs('pp-admin.dashboard')">
+            <x-responsive-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
         </div>
