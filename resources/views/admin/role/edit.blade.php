@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-admin-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Roles') }}
@@ -8,7 +8,7 @@
 
 	{{ Html::ul($errors->all(),['class' => 'text-danger']) }}
 
-{{ Form::model($role, array('route' => array('roles.update', $role->id), 'method' => 'PUT')) }}
+{{ Form::model($role, array('route' => array('admin.roles.update', $role->id), 'method' => 'PUT')) }}
 
 
 
@@ -41,4 +41,4 @@
 
 	{{ Form::close() }}
 
-</x-app-layout>
+</x-admin-layout>

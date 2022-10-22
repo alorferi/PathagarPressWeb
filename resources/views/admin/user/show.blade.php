@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-admin-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Users') }}
@@ -12,14 +12,24 @@
             @endpermission
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 m-6 bg-white border-b border-gray-200">
-                    {{ $user->user_title }}
+                    {{ $user->name }}
                     <a href="{{ route('admin.users.edit', $user->id) }}">Edit</a>
                 </div>
 
                 <div class="p-6 m-6 bg-white border-b border-gray-200">
-                    {{ $user->user_content }}
+                    {{ $user->email }}
                 </div>
 
             </div>
 
-</x-app-layout>
+
+            @foreach($user->roles as $role)
+
+            Roles:
+            <div class="p-6 m-6 bg-white border-b border-gray-200">
+                {{ $role->name }}
+            </div>
+            {{-- <input type="checkbox" {{in_array($role->id, $user_roles)? "checked":""}} name="role_ids[]" value="{{ $role->id }}"> {{ $role->name }} <br /> --}}
+            @endforeach
+
+</x-admin-layout>

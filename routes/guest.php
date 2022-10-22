@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\Guest\PostController as GuestPostController;
+use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\PostController ;
 use App\Models\Post;
 
 Route::get('/', function () {
@@ -9,5 +10,6 @@ Route::get('/', function () {
 })->name("/");
 
 
-Route::get('posts', [GuestPostController::class,'index'])->name('guest.posts.index');
-Route::get('posts/{post}', [GuestPostController::class,'show'])->name('guest.posts.show');
+Route::get('gallery', [GalleryController::class,'index'])->name('gallery.index');
+Route::get('posts', [PostController::class,'index'])->name('posts.index');
+Route::get('posts/{post}', [PostController::class,'show'])->name('posts.show');

@@ -60,6 +60,7 @@ class Permission extends LaratrustPermission
 
             //Post
             Permission::post_create ,
+            Permission::post_edit ,
             Permission::post_index ,
 
             //Author

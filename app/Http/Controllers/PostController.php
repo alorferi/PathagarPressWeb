@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Guest;
+namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Post;
@@ -16,7 +16,7 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::paginate();
-        return view('guest.post.index', compact('posts'));
+        return view('post.index', compact('posts'));
     }
 
 }

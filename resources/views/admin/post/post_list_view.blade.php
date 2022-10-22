@@ -8,7 +8,7 @@
         <div class="p-6 m-6 bg-white border-b border-gray-200">
             {{ $post->post_title }}
 
-            <a href="{{ route('guest.posts.show', $post->id) }}">Details</a>
+            <a href="{{ route('posts.show', $post->id) }}">Details</a>
 
             @permission('post_edit')
                 <a href="{{ route('admin.posts.edit', $post->id) }}">Edit</a>
