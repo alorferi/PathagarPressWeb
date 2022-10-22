@@ -24,28 +24,29 @@
                         {{ __('Gallery') }}
                     </x-nav-link>
 
-                    <x-nav-link :href="route('gallery.index')" :active="request()->routeIs('gallery.index')">
-                        {{ __('Donate') }}
-                    </x-nav-link>
 
 
-
-                    <x-nav-link :href="route('gallery.index')" :active="request()->routeIs('gallery.index')">
+                    <x-nav-link :href="route('committees.index')" :active="request()->routeIs('committees.index')">
                         {{ __('Committee') }}
                     </x-nav-link>
 
-                    <x-nav-link :href="route('gallery.index')" :active="request()->routeIs('gallery.index')">
+                    <x-nav-link :href="route('books.index')" :active="request()->routeIs('books.index')">
                         {{ __('Books') }}
                     </x-nav-link>
 
 
-                    <x-nav-link :href="route('gallery.index')" :active="request()->routeIs('gallery.index')">
+                    <x-nav-link :href="route('members.index')" :active="request()->routeIs('members.index')">
                         {{ __('Members') }}
                     </x-nav-link>
 
-                    <x-nav-link :href="route('gallery.index')" :active="request()->routeIs('gallery.index')">
-                        {{ __('About') }}
+                    <x-nav-link :href="route('about-us.index')" :active="request()->routeIs('about-us.index')">
+                        {{ __('About Us') }}
                     </x-nav-link>
+
+                    <x-nav-link :href="route('donate-us.index')" :active="request()->routeIs('donate-us.index')">
+                        {{ __('Donate Us') }}
+                    </x-nav-link>
+
 
 
 
