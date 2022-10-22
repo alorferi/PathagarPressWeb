@@ -59,6 +59,11 @@
                             </x-slot>
 
                             <x-slot name="content">
+
+                                <x-dropdown-link :href="route('pp-admin.dashboard')">
+                                    {{ __('Switch to admin') }}
+                                </x-dropdown-link>
+
                                 <!-- Authentication -->
                                 <form method="POST" action="{{ route('logout') }}">
                                     @csrf
