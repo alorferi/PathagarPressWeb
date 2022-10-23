@@ -9,6 +9,7 @@ use Redirect;
 use Session;
 use Validator;
 use App\Http\Controllers\Controller;
+use App\Models\Image;
 
 class PostController extends Controller
 {
@@ -47,7 +48,13 @@ class PostController extends Controller
     'post_content_filtered'=>'',
     ]);
 
-        $post = Post::create($request->all());
+        $post = Post::create($request->except('image'));
+
+        if ($request->hasFile('image')) {
+            $imageFile = $request->file('image');
+            Image::createX($imageFile, $post, 1024);
+        }
+
         // redirect
         Session::flash('message', "Successfully saved!");
         return Redirect::to(route('admin.posts.index', $post->id));
@@ -75,7 +82,18 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        $post->update($request->all());
+        $post->update($request->except('image'));
+
+        if ($request->hasFile('image')) {
+            $imageFile = $request->file('image');
+
+            if ($post->image==null) {
+                Image::createX($imageFile, $post, 1024);
+            } else {
+                $post->image->updateX($imageFile);
+            }
+        }
+
         // redirect
         Session::flash('message', "Successfully saved!");
         return Redirect::to(route('admin.posts.index', $post->id));

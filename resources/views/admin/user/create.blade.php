@@ -18,7 +18,7 @@
                     @csrf
 
 
-                    @include('user.input_fields')
+                    @include('admin.user.input_fields')
 
                     <div class="flex items-center justify-end mt-4">
 

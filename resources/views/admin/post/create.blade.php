@@ -19,7 +19,7 @@
                     @csrf
 
 
-                    @include('post.input_fields')
+                    @include('admin.post.input_fields')
 
                     <div class="flex items-center justify-end mt-4">
 

@@ -13,8 +13,10 @@ class Post extends Model
 
     protected $guarded = [];
 
+    protected $dates = ['post_date','created_at','updated_at'];
+
     public function author(){
-        return $this->belongsTo(User::class,'id','post_author');
+        return $this->belongsTo(User::class,'post_author','id');
     }
 
     /**

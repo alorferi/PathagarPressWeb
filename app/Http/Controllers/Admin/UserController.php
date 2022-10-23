@@ -5,10 +5,13 @@ namespace App\Http\Controllers\Admin;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Image;
+use Session;
+use Redirect;
 
 class UserController extends Controller
 {
-      /**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -41,10 +44,16 @@ class UserController extends Controller
 
     ]);
 
-        $user = User::create($request->all());
+        $user = User::create($request->except('photo'));
+
+        if ($request->hasFile('photo')) {
+            $photoFile = $request->file('photo');
+            Image::createX($photoFile, $user, 512);
+        }
+
         // redirect
         Session::flash('message', "Successfully saved!");
-        return Redirect::to(route('users.show', $user->id));
+        return Redirect::to(route('admin.users.show', $user->id));
     }
 
     /**
@@ -78,10 +87,21 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        $user->update($request->all());
+        $user->update($request->except('photo'));
+
+        if ($request->hasFile('photo')) {
+            $photoFile = $request->file('photo');
+
+            if ($user->image==null) {
+                Image::createX($photoFile, $user, 512);
+            } else {
+                $user->image->updateX($photoFile,512);
+            }
+        }
+
         // redirect
         Session::flash('message', "Successfully saved!");
-        return Redirect::to(route('users.show', $user->id));
+        return Redirect::to(route('admin.users.show', $user->id));
     }
 
     /**
