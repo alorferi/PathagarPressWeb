@@ -19,4 +19,17 @@ class PostController extends Controller
         return view('post.index', compact('posts'));
     }
 
+
+      /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Post $post)
+    {
+
+        return view('post.show', compact('post'));
+    }
+
 }

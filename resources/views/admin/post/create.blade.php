@@ -14,9 +14,8 @@
                 <div class="p-6 m-6 bg-white border-b border-gray-200">
                     {{ Html::ul($errors->all(), ['class' => 'text-danger']) }}
 
-                    {{ Form::open(['route' => 'posts.store', 'files' => true]) }}
+                    {{ Form::open(['route' => 'admin.posts.store', 'files' => true]) }}
 
-                    {{-- <form method="POST" action="{{ route('posts.update',$post->id) }}"> --}}
                     @csrf
 
 

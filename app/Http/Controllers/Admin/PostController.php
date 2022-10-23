@@ -50,19 +50,10 @@ class PostController extends Controller
         $post = Post::create($request->all());
         // redirect
         Session::flash('message', "Successfully saved!");
-        return Redirect::to(route('posts.show', $post->id));
+        return Redirect::to(route('admin.posts.index', $post->id));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Post $post)
-    {
-        return view('admin.post.show', compact('post'));
-    }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -87,7 +78,7 @@ class PostController extends Controller
         $post->update($request->all());
         // redirect
         Session::flash('message', "Successfully saved!");
-        return Redirect::to(route('posts.show', $post->id));
+        return Redirect::to(route('admin.posts.index', $post->id));
     }
 
     /**

@@ -14,12 +14,11 @@
                 <div class="p-6 m-6 bg-white border-b border-gray-200">
                     {{ Html::ul($errors->all(), ['class' => 'text-danger']) }}
 
-                    {{ Form::model($post, ['route' => ['posts.update', $post->id], 'method' => 'PUT', 'files' => true]) }}
+                    {{ Form::model($post, ['route' => ['admin.posts.update', $post->id], 'method' => 'PUT', 'files' => true]) }}
 
-                    {{-- <form method="POST" action="{{ route('posts.update',$post->id) }}"> --}}
                     @csrf
 
-                    @include('post.input_fields')
+                    @include('admin.post.input_fields')
 
                     <div class="flex items-center justify-end mt-4">
 
