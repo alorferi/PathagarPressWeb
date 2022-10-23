@@ -25,7 +25,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        View::composer(['layouts.app','layouts.guest'], function ($view) {
+        View::composer(['layouts.admin','layouts.guest'], function ($view) {
             $defaultLibraryName = null;
             $defaultLibraryId = null;
 
