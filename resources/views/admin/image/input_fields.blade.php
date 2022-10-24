@@ -13,9 +13,8 @@
 
 </div>
 
-<!-- Email Address -->
 <div class="mt-4">
-    <x-label for="caption" :value="__('Body')" />
+    <x-label for="caption" :value="__('Caption')" />
     {{ Form::text('caption', Request::old('caption'), ['class' => 'block mt-1 w-full']) }}
 </div>
 
