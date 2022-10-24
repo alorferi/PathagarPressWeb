@@ -17,10 +17,10 @@ class CreateImagesTable extends Migration
             $table->id();
 
             $table->string('url')->nullable();
-            $table->string('caption')->nullable();;
+            $table->string('caption')->nullable();
 
-            $table->unsignedBigInteger('imageable_id');
-            $table->string('imageable_type');
+            $table->unsignedBigInteger('imageable_id')->nullable();
+            $table->string('imageable_type')->nullable();
 
             $table->timestamps();
             $table->softDeletes();

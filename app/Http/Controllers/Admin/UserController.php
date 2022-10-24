@@ -48,7 +48,7 @@ class UserController extends Controller
 
         if ($request->hasFile('photo')) {
             $photoFile = $request->file('photo');
-            Image::createX($photoFile, $user, 512);
+            Image::createX($photoFile, 512, $user);
         }
 
         // redirect
@@ -93,9 +93,9 @@ class UserController extends Controller
             $photoFile = $request->file('photo');
 
             if ($user->image==null) {
-                Image::createX($photoFile, $user, 512);
+                Image::createX($photoFile, 512, $user);
             } else {
-                $user->image->updateX($photoFile,512);
+                $user->image->updateX($photoFile, 512);
             }
         }
 

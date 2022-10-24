@@ -21,7 +21,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::orderBy('post_date','desc')->paginate();
+        $posts = Post::orderBy('post_date', 'desc')->paginate();
         return view('admin.post.index', compact('posts'));
     }
 
@@ -53,12 +53,12 @@ class PostController extends Controller
 
         if ($request->hasFile('image')) {
             $imageFile = $request->file('image');
-            Image::createX($imageFile, $post, 1024);
+            Image::createX($imageFile, 1024, $post);
         }
 
         // redirect
         Session::flash('message', "Successfully saved!");
-        return Redirect::to(route('admin.posts.index', $post->id));
+        return Redirect::to(route('admin.posts.index'));
     }
 
 
@@ -71,12 +71,11 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-
         $authors = User::pluck('name', 'id')->prepend('Please Select...', null);
 
         $post_author = $post->post_author;
 
-        return view('admin.post.edit', compact('post','authors','post_author'));
+        return view('admin.post.edit', compact('post', 'authors', 'post_author'));
     }
 
     /**
@@ -94,7 +93,7 @@ class PostController extends Controller
             $imageFile = $request->file('image');
 
             if ($post->image==null) {
-                Image::createX($imageFile, $post, 1024);
+                Image::createX($imageFile, 1024, $post);
             } else {
                 $post->image->updateX($imageFile);
             }

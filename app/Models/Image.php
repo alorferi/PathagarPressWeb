@@ -44,21 +44,21 @@ class Image extends Model
         }
     }
 
-     public static function createX($imageFile, $imageable_object,$size)
+     public static function createX($imageFile, $size, $imageable_object = null)
      {
          if ($imageFile==null) {
              return false;
          }
 
          $createParams =  [
-             'imageable_id'=>$imageable_object->id,
-             'imageable_type'=>get_class($imageable_object)
+             'imageable_id'=>$imageable_object ==null ? null : $imageable_object->id,
+             'imageable_type'=>$imageable_object ==null ? null : get_class($imageable_object)
             ];
 
          $image = Image::create($createParams);
 
          //save and resize image
-         Image::resizeAndSavePhoto($image, $imageFile,$size);
+         Image::resizeAndSavePhoto($image, $imageFile, $size);
 
          $image->url = $image->generateImageUrl($imageFile);
          $image->save();
@@ -67,7 +67,7 @@ class Image extends Model
      }
 
 
-     public function updateX($imageFile,$size)
+     public function updateX($imageFile, $size)
      {
          if ($imageFile==null) {
              return false;
@@ -76,7 +76,7 @@ class Image extends Model
          $image_name = $this->generateImageNameFromPhoto($imageFile);
 
          //save and resize image
-         Image::resizeAndSavePhoto($this, $imageFile,$size);
+         Image::resizeAndSavePhoto($this, $imageFile, $size);
 
          $this->url = $this->generateImageUrl($imageFile);
          $this->save();
@@ -85,7 +85,7 @@ class Image extends Model
      }
 
 
-     public static function resizeAndSavePhoto(Image $image, $imageFile,$size)
+     public static function resizeAndSavePhoto(Image $image, $imageFile, $size)
      {
          $image_name = $image->generateImageNameFromPhoto($imageFile);
          $img = ImageLib::make($imageFile->getRealPath());
@@ -93,5 +93,4 @@ class Image extends Model
              $constraint->aspectRatio();
          })->save(Image::ImagePath($image_name));
      }
-
 }

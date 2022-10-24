@@ -18,7 +18,7 @@ class ImageController extends Controller
      */
     public function index()
     {
-        $images = Image::orderBy('created_at','desc')->paginate();
+        $images = Image::orderBy('created_at', 'desc')->paginate();
         return view('admin.image.index', compact('images'));
     }
 
@@ -40,7 +40,16 @@ class ImageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $image = Image::create($request->except('image'));
+
+        if ($request->hasFile('image')) {
+            $imageFile = $request->file('image');
+            $image->updateX($imageFile, 1024);
+        }
+
+        // redirect
+        Session::flash('message', "Successfully saved!");
+        return Redirect::to(route('admin.images.index'));
     }
 
     /**
@@ -78,7 +87,7 @@ class ImageController extends Controller
 
         if ($request->hasFile('image')) {
             $imageFile = $request->file('image');
-            $image->updateX($imageFile,1024);
+            $image->updateX($imageFile, 1024);
         }
 
         // redirect

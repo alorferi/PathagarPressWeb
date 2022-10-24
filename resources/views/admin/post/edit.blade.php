@@ -5,10 +5,9 @@
         </h2>
     </x-slot>
 
-
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
 
-                <a href="{{ route('posts.index') }}"
+                <a href="{{ route('admin.posts.index') }}"
                 class="bg-blue-500 text-white font-bold py-2 px-4 mx-4 my-4 rounded-full">Back</a>
 
                 <div class="p-6 m-6 bg-white border-b border-gray-200">
