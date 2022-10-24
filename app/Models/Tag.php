@@ -4,10 +4,18 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Tag extends Model
 {
+    use SoftDeletes;
     use HasFactory;
+
+    protected $guarded = [];
+
+    protected $dates = ['created_at','updated_at'];
+
+
 
      /**
      * Get all of the posts that are assigned this tag.

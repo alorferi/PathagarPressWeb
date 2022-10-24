@@ -3,18 +3,22 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Tag;
 use Illuminate\Http\Request;
+use Session;
+use Redirect;
 
 class TagController extends Controller
 {
-    /**
+     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        //
+        $tags = Tag::orderBy('created_at', 'desc')->paginate();
+        return view('admin.tag.index', compact('tags'));
     }
 
     /**
@@ -24,7 +28,7 @@ class TagController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.tag.create');
     }
 
     /**
@@ -35,7 +39,16 @@ class TagController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $tag = Tag::create($request->except('tag'));
+
+        if ($request->hasFile('tag')) {
+            $tagFile = $request->file('tag');
+            $tag->updateX($tagFile, 1024);
+        }
+
+        // redirect
+        Session::flash('message', "Successfully saved!");
+        return Redirect::to(route('admin.tags.index'));
     }
 
     /**
@@ -55,9 +68,9 @@ class TagController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Tag $tag)
     {
-        //
+        return view('admin.tag.edit', compact('tag'));
     }
 
     /**
@@ -67,9 +80,18 @@ class TagController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Tag $tag)
     {
-        //
+        $tag->update($request->except('tag'));
+
+        if ($request->hasFile('tag')) {
+            $tagFile = $request->file('tag');
+            $tag->updateX($tagFile, 1024);
+        }
+
+        // redirect
+        Session::flash('message', "Successfully saved!");
+        return Redirect::to(route('admin.tags.index', $tag->id));
     }
 
     /**
