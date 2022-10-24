@@ -7,7 +7,7 @@
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('admin.dashboard') }}">
                         {{-- Admin --}}
-                        <x-application-logo class="block h-10 w-auto fill-current text-gray-600" />
+                        <x-admin-logo class="xblock h-10 w-auto fill-current text-gray-600" />
                     </a>
                 </div>
 
