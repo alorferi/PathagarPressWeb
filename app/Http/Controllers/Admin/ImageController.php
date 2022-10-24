@@ -3,7 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Image;
 use Illuminate\Http\Request;
+use Session;
+use App\Models\Post;
+use Redirect;
 
 class ImageController extends Controller
 {
@@ -14,7 +18,8 @@ class ImageController extends Controller
      */
     public function index()
     {
-        //
+        $images = Image::orderBy('created_at','desc')->paginate();
+        return view('admin.image.index', compact('images'));
     }
 
     /**
@@ -24,7 +29,7 @@ class ImageController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.image.create');
     }
 
     /**
@@ -55,9 +60,9 @@ class ImageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Image $image)
     {
-        //
+        return view('admin.image.edit', compact('image'));
     }
 
     /**
@@ -67,9 +72,18 @@ class ImageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Image $image)
     {
-        //
+        $image->update($request->except('image'));
+
+        if ($request->hasFile('image')) {
+            $imageFile = $request->file('image');
+            $image->updateX($imageFile,1024);
+        }
+
+        // redirect
+        Session::flash('message', "Successfully saved!");
+        return Redirect::to(route('admin.images.index', $image->id));
     }
 
     /**

@@ -15,6 +15,8 @@ class Image extends Model
 
     protected $guarded = [];
 
+    protected $dates = ['created_at'];
+
     /**
      * Get the parent imageable model (user or post).
      */
