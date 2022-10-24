@@ -10,7 +10,25 @@
                 <a href="{{ route('admin.posts.create') }}" class="bg-blue-500 text-white font-bold py-2 px-4 rounded-full">Create</a>
             @endpermission
 
-            @include('admin.post.post_list_view')
+            <div class="p-2">
+                {!! $posts->links() !!}
+            </div>
+
+            {{-- <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg"> --}}
+
+            @forelse($posts as $post)
+
+            @include("admin.post.post_horizontal_card_item")
+
+            @empty
+                <p>No Posts</p>
+            @endforelse
+            {{-- </div> --}}
+
+            <div class="p-2">
+                {!! $posts->links() !!}
+            </div>
+
 
 
 </x-admin-layout>
