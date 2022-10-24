@@ -1,4 +1,4 @@
-<div class="max-w-sm w-full lg:max-w-full lg:flex py-2 px-4">
+{{-- <div class="max-w-sm w-full lg:max-w-full lg:flex py-2 px-4">
     @if ($post->image != null)
         <img class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"
             src="{{ asset($post->image->url) }}" width="256" />
@@ -34,17 +34,17 @@
         @endpermission
 
     </div>
-</div>
+</div> --}}
 
 
-  {{-- <div class="p-6 m-6 bg-white border-b border-gray-200">
+  <div class="p-6 m-6 bg-white border-b border-gray-200">
 
         @if ($post->image != null)
             <img src="{{ asset($post->image->url) }}" width="258" height="100" />
         @endif
 
-        {{ $post->post_title }}
-
+        <div class="text-gray-900 font-bold text-xl mb-2"> {{ $post->post_title }}</div>
+        <p class="text-gray-700 text-base"> {{ $post->post_content }}</p>
 
         @if ($post->author != null)
             <div class="px-6 pt-4 pb-2 flex items-center">
@@ -70,4 +70,4 @@
         @endpermission
 
 
-    </div> --}}
+    </div>
