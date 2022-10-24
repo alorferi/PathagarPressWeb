@@ -15,6 +15,15 @@ class Post extends Model
 
     protected $dates = ['post_date','created_at','updated_at'];
 
+
+    /**
+     * Get all of the tags for the post.
+     */
+    public function tags()
+    {
+        return $this->morphToMany(Tag::class, 'taggable');
+    }
+
     public function author(){
         return $this->belongsTo(User::class,'post_author','id');
     }

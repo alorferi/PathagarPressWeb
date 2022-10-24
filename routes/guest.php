@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AboutUsController;
+use App\Http\Controllers\Admin\ImageController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\CommitteeController;
 use App\Http\Controllers\DonateUsController;
@@ -16,7 +17,8 @@ Route::get('/', function () {
 
 Route::get('posts', [PostController::class,'index'])->name('posts.index');
 Route::get('posts/{post}', [PostController::class,'show'])->name('posts.show');
-Route::get('gallery', [GalleryController::class,'index'])->name('gallery.index');
+Route::get('images', [ImageController::class,'index'])->name('images.index');
+Route::get('videos', [VideoController::class,'index'])->name('images.index');
 Route::get('about-us', [AboutUsController::class,'index'])->name('about-us.index');
 Route::get('donate-us', [DonateUsController::class,'index'])->name('donate-us.index');
 Route::get('books', [BookController::class,'index'])->name('books.index');

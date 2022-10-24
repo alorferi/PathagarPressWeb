@@ -22,6 +22,18 @@
                     </x-nav-link>
 
 
+                    <x-nav-link :href="route('admin.images.index')" :active="request()->routeIs('admin.images.index')">
+                        {{ __('Images') }}
+                    </x-nav-link>
+
+                    <x-nav-link :href="route('admin.videos.index')" :active="request()->routeIs('admin.videos.index')">
+                        {{ __('Videos') }}
+                    </x-nav-link>
+
+                    <x-nav-link :href="route('admin.tags.index')" :active="request()->routeIs('admin.tags.index')">
+                        {{ __('Tags') }}
+                    </x-nav-link>
+
                     @permission('comment_create')
                         <x-nav-link :href="route('admin.comments.index')" :active="request()->routeIs('comments.index')">
                             {{ __('Comments') }}
