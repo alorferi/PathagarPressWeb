@@ -16,7 +16,7 @@
                 @endif
                 <div class="text-sm">
                     <p class="text-gray-900 leading-none">{{ $post->author->name }}</p>
-                    <p class="text-gray-600">{{ $post->post_date->diffForhumans() }}</p>
+                    <p class="text-gray-600">{{ $post->post_date->diffForhumans() }} | {{ $post->post_status }}</p>
                 </div>
             </div>
         @endif

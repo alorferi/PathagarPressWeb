@@ -21,7 +21,7 @@ class CreatePostsTable extends Migration
             $table->longText('post_content');
             $table->text('post_title');
             $table->text('post_excerpt');
-            $table->string('post_status',20)->default('publish');
+            $table->string('post_status',20)->default('draft');
             $table->string('comment_status',20)->default('open');
             $table->string('ping_status',20)->default('open');
             $table->string('post_password')->default('');

@@ -31,5 +31,26 @@
 
 <div class="mt-4">
 {{ Form::label('post_author', 'Author') }}
-{{ Form::select('post_author', $authors, $post_author, [''], array('class' => 'form-control')) }}
+{{ Form::select('post_author', $authors,  Request::old('post_author'), [''], array('class' => 'form-control')) }}
+</div>
+
+@php
+
+    if(isset($post)){
+        $post_date = $post->post_date->format('Y-m-d');
+    }else{
+        $post_date = datte('Y-m-d');
+    }
+
+@endphp
+
+<div class="mt-4">
+    <x-label for="post_date" :value="__('Posted at')" />
+    {{ Form::date('post_date', $post_date, ['class' => 'block mt-1 w-full']) }}
+</div>
+
+
+<div class="mt-4">
+    {{ Form::label('post_status', 'Post status') }}
+    {{ Form::select('post_status', ['draft'=>'Draft','publish'=>'Publish','inherit'=>"Inherit",'auto-draft'=>'Auto-draft'], Request::old('post_status'), [''], array('class' => 'form-control')) }}
 </div>

@@ -11,7 +11,9 @@ use App\Http\Controllers\PostController ;
 use App\Models\Post;
 
 Route::get('/', function () {
-    $posts = Post::latest()->paginate();
+    $posts = Post::latest()
+    ->where('post_status', 'publish')
+    ->paginate();
     return view('welcome', compact('posts'));
 })->name("/");
 

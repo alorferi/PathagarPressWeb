@@ -18,7 +18,7 @@
 
             @forelse($posts as $post)
 
-            @include("admin.post.post_horizontal_card_item")
+            @include("admin.post.post_h_card_item")
 
             @empty
                 <p>No Posts</p>
