@@ -28,3 +28,8 @@
     {{-- <x-input id="post_content" class="block mt-1 w-full" type="text" name="post_content"
             :value="{{$post->post_content}}" required /> --}}
 </div>
+
+<div class="mt-4">
+{{ Form::label('post_author', 'Author') }}
+{{ Form::select('post_author', $authors, $post_author, [''], array('class' => 'form-control')) }}
+</div>

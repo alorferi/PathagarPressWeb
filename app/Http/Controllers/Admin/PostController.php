@@ -10,6 +10,7 @@ use Session;
 use Validator;
 use App\Http\Controllers\Controller;
 use App\Models\Image;
+use App\Models\User;
 
 class PostController extends Controller
 {
@@ -70,7 +71,12 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        return view('admin.post.edit', compact('post'));
+
+        $authors = User::pluck('name', 'id')->prepend('Please Select...', null);
+
+        $post_author = $post->post_author;
+
+        return view('admin.post.edit', compact('post','authors','post_author'));
     }
 
     /**

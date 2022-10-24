@@ -26,18 +26,18 @@
 
 
 
-                    <x-nav-link :href="route('committees.index')" :active="request()->routeIs('committees.index')">
+                    {{-- <x-nav-link :href="route('committees.index')" :active="request()->routeIs('committees.index')">
                         {{ __('Committee') }}
                     </x-nav-link>
 
                     <x-nav-link :href="route('books.index')" :active="request()->routeIs('books.index')">
                         {{ __('Books') }}
-                    </x-nav-link>
+                    </x-nav-link> --}}
 
-
+{{--
                     <x-nav-link :href="route('members.index')" :active="request()->routeIs('members.index')">
                         {{ __('Members') }}
-                    </x-nav-link>
+                    </x-nav-link> --}}
 
                     <x-nav-link :href="route('about-us.index')" :active="request()->routeIs('about-us.index')">
                         {{ __('About Us') }}
