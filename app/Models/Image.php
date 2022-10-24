@@ -32,7 +32,7 @@ class Image extends Model
 
     public function generateImageUrl($imageFile)
     {
-        return "/images/".$this->generateImageNameFromPhoto($imageFile);
+        return "storage/images/".$this->generateImageNameFromPhoto($imageFile);
     }
 
     public static function ImagePath($image_name=null)

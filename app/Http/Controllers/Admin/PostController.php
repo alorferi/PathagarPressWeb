@@ -95,7 +95,7 @@ class PostController extends Controller
             if ($post->image==null) {
                 Image::createX($imageFile, 1024, $post);
             } else {
-                $post->image->updateX($imageFile);
+                $post->image->updateX($imageFile,1024);
             }
         }
 

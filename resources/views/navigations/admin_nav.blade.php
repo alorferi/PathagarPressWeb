@@ -43,7 +43,7 @@
 
 
                     @permission('option_create')
-                        <x-nav-link :href="route('admin.options.index')" :active="request()->routeIs('options.index')">
+                        <x-nav-link :href="route('admin.options.index')" :active="request()->routeIs('admin.options.index')">
                             {{ __('Options') }}
                         </x-nav-link>
                     @endpermission

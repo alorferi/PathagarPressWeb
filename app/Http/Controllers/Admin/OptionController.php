@@ -84,7 +84,7 @@ class OptionController extends Controller
         $option->update($request->all());
         // redirect
         Session::flash('message', "Successfully saved!");
-        return Redirect::to(route('options.index'));
+        return Redirect::to(route('admin.options.index'));
     }
 
     /**
