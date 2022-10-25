@@ -19,10 +19,20 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $posts = Post::orderBy('created_at', 'desc')->paginate();
-        return view('admin.post.index', compact('posts'));
+        $term = $request->term ?? null;
+
+        $posts = Post::where(function ($query) use ($term) {
+
+            if($term){
+                $query->where('post_title','like',"%$term%");
+            }
+
+        })
+        ->orderBy('created_at', 'desc')->paginate();
+
+        return view('admin.post.index', compact('posts', 'term'));
     }
 
     /**
@@ -95,7 +105,7 @@ class PostController extends Controller
             if ($post->image==null) {
                 Image::createX($imageFile, 1024, $post);
             } else {
-                $post->image->updateX($imageFile,1024);
+                $post->image->updateX($imageFile, 1024);
             }
         }
 

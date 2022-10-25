@@ -25,7 +25,7 @@
 
         <!-- Page Heading -->
         <header class="bg-white shadow">
-            <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+            <div class="max-w-screen-xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                 {{-- {{ $header }} --}}
                 <h1>{{ $blogname->option_value }} - {{ $blogdescription->option_value }} </h1>
             </div>
@@ -33,7 +33,7 @@
 
         <!-- Page Content -->
         <div class="py-12">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="max-w-screen-xl mx-auto sm:px-6 lg:px-8">
                 {{ $slot }}
             </div>
         </div>

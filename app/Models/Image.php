@@ -32,7 +32,7 @@ class Image extends Model
 
     public function generateImageUrl($imageFile)
     {
-        return "storage/images/".$this->generateImageNameFromPhoto($imageFile);
+        return "/storage/images/".$this->generateImageNameFromPhoto($imageFile);
     }
 
     public static function ImagePath($image_name=null)
@@ -73,7 +73,7 @@ class Image extends Model
              return false;
          }
 
-         $image_name = $this->generateImageNameFromPhoto($imageFile);
+        //  $image_name = $this->generateImageNameFromPhoto($imageFile);
 
          //save and resize image
          Image::resizeAndSavePhoto($this, $imageFile, $size);

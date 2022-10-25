@@ -10,6 +10,8 @@
                 <a href="{{ route('admin.posts.create') }}" class="bg-blue-500 text-white font-bold py-2 px-4 rounded-full">Create</a>
             @endpermission
 
+            @include('layouts.partials.search')
+
             <div class="p-2">
                 {!! $posts->links() !!}
             </div>
