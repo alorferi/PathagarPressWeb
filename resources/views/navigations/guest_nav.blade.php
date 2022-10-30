@@ -43,9 +43,9 @@
                         {{ __('About Us') }}
                     </x-nav-link>
 
-                    <x-nav-link :href="route('donate-us.index')" :active="request()->routeIs('donate-us.index')">
+                    {{-- <x-nav-link :href="route('donate-us.index')" :active="request()->routeIs('donate-us.index')">
                         {{ __('Donate Us') }}
-                    </x-nav-link>
+                    </x-nav-link> --}}
 
 
 
@@ -130,8 +130,12 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{ 'block': open, 'hidden': !open }" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
-                {{ __('Dashboard') }}
+            <x-responsive-nav-link :href="route('posts.index')" :active="request()->routeIs('posts.index')">
+                {{ __('Post') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('about-us.index')" :active="request()->routeIs('about-us.index')">
+                {{ __('About Us') }}
+
             </x-responsive-nav-link>
         </div>
 
