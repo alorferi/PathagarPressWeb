@@ -39,12 +39,20 @@ class TagController extends Controller
      */
     public function store(Request $request)
     {
-        $tag = Tag::create($request->except('tag'));
 
-        if ($request->hasFile('tag')) {
-            $tagFile = $request->file('tag');
-            $tag->updateX($tagFile, 1024);
+
+        if($request->has('slug') && $request->slug!=""){
+          $slug =  str_replace(' ', '_', $request->slug);
+        }else{
+            $slug =  str_replace(' ', '_', $request->name);
         }
+
+        $request =  $request->merge([
+            'slug'=>$slug,
+        ]);
+
+        $tag = Tag::create($request->all());
+
 
         // redirect
         Session::flash('message', "Successfully saved!");

@@ -21,6 +21,14 @@
             </div>
         @endif
 
+        @foreach ($post->tags as $tag)
+
+        #{{$tag->slug}}
+        <br>
+
+        @endforeach
+
+
 
         <a class="bg-blue-500 text-white font-bold py-2 px-4"class="bg-blue-500 text-white font-bold py-2 px-4"
             href="{{ route('posts.show', $post->id) }}" target="_blank">Details</a>

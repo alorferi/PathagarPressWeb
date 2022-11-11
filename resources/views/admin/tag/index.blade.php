@@ -16,8 +16,7 @@
 
             @forelse($tags as $tag)
 
-            <p class="text-gray-700 text-base"> {{ $tag->name }}</p>
-
+            <p class="text-gray-700 text-base"> {{ $tag->slug }} | {{ $tag->name }}</p>
             @empty
                 <p>No Tags</p>
             @endforelse

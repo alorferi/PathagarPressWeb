@@ -1,7 +1,7 @@
 <div class="form-group">
     <div class="p-2">
 
-        @if ($post->image != null)
+        @if (isset($post) && $post->image != null)
             <img id="postImage" src="{{ asset($post->image->url) }}" />
         @endif
 
@@ -30,16 +30,16 @@
 </div>
 
 <div class="mt-4">
-{{ Form::label('post_author', 'Author') }}
-{{ Form::select('post_author', $authors,  Request::old('post_author'), [''], array('class' => 'form-control')) }}
+    {{ Form::label('post_author', 'Author') }}
+    {{ Form::select('post_author', $authors, Request::old('post_author'), [''], ['class' => 'form-control']) }}
 </div>
 
 @php
 
-    if(isset($post)){
+    if (isset($post)) {
         $post_date = $post->post_date->format('Y-m-d');
-    }else{
-        $post_date = datte('Y-m-d');
+    } else {
+        $post_date = date('Y-m-d');
     }
 
 @endphp
@@ -49,8 +49,13 @@
     {{ Form::date('post_date', $post_date, ['class' => 'block mt-1 w-full']) }}
 </div>
 
+<div class="mt-4">
+    {{ Form::label('post_tag_ids', 'Tags') }}
+
+    {{ Form::select('post_tag_ids[]', $tags, $post->tags()->pluck('id'), ['id' => 'post_tag_ids', 'multiple' => 'multiple']) }}
+</div>
 
 <div class="mt-4">
     {{ Form::label('post_status', 'Post status') }}
-    {{ Form::select('post_status', ['draft'=>'Draft','publish'=>'Publish','inherit'=>"Inherit",'auto-draft'=>'Auto-draft'], Request::old('post_status'), [''], array('class' => 'form-control')) }}
+    {{ Form::select('post_status', ['draft' => 'Draft', 'publish' => 'Publish', 'inherit' => 'Inherit', 'auto-draft' => 'Auto-draft'], Request::old('post_status'), [''], ['class' => 'form-control']) }}
 </div>

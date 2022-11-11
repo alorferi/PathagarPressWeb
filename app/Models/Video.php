@@ -15,4 +15,12 @@ class Video extends Model
 
     protected $guarded = [];
 
+    /**
+     * Get all of the tags for the post.
+     */
+    public function tags()
+    {
+        return $this->morphToMany(Tag::class, 'taggable');
+    }
+
 }

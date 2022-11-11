@@ -10,6 +10,7 @@ use Session;
 use Validator;
 use App\Http\Controllers\Controller;
 use App\Models\Image;
+use App\Models\Tag;
 use App\Models\User;
 
 class PostController extends Controller
@@ -24,11 +25,9 @@ class PostController extends Controller
         $term = $request->term ?? null;
 
         $posts = Post::where(function ($query) use ($term) {
-
-            if($term){
-                $query->where('post_title','like',"%$term%");
+            if ($term) {
+                $query->where('post_title', 'like', "%$term%");
             }
-
         })
         ->orderBy('created_at', 'desc')->paginate();
 
@@ -42,7 +41,10 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('admin.post.create');
+        $authors = User::pluck('name', 'id')->prepend('Please Select...', null);
+        $tags = Tag::pluck('name', 'id')->prepend('Please Select...', null);
+
+        return view('admin.post.create', compact('tags', 'authors'));
     }
 
     /**
@@ -82,10 +84,10 @@ class PostController extends Controller
     public function edit(Post $post)
     {
         $authors = User::pluck('name', 'id')->prepend('Please Select...', null);
-
+        $tags = Tag::pluck('name', 'id')->prepend('Please Select...', null);
         $post_author = $post->post_author;
 
-        return view('admin.post.edit', compact('post', 'authors', 'post_author'));
+        return view('admin.post.edit', compact('post', 'authors', 'post_author','tags'));
     }
 
     /**
@@ -97,7 +99,13 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        $post->update($request->except('image'));
+
+        //  dump($request->post_tag_ids);
+
+        $post->update($request->except('image','post_tag_ids'));
+
+
+        $post->tags()->sync($request->post_tag_ids);
 
         if ($request->hasFile('image')) {
             $imageFile = $request->file('image');
